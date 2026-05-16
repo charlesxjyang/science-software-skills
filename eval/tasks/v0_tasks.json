@@ -1,0 +1,73 @@
+[
+  {
+    "id": "impedance-fit-randles-cpe-warburg",
+    "skill": "impedance",
+    "title": "Fit EIS Spectrum With Equivalent Circuit",
+    "prompt": "I have a CSV exported from a potentiostat with columns frequency, Zreal, Zimag. Fit it to R_0-p(R_1,CPE_1)-Wo_1, plot the Nyquist data and fit, and give me a small table of fitted parameter values with uncertainties. Write Python code I can adapt.",
+    "success_criteria": [
+      "Uses impedance.py CustomCircuit rather than hand-rolled scipy.optimize",
+      "Creates or reads complex impedance Z with frequency in Hz",
+      "Uses ordered initial_guess and labels parameters via get_param_names",
+      "Mentions parameters_ and conf_ for values and uncertainties",
+      "Plots Nyquist data/fit and recommends residual or Lin-KK checks"
+    ],
+    "kdense_applicable": false
+  },
+  {
+    "id": "ase-pymatgen-mace-relax",
+    "skill": "mace",
+    "context_skills": ["mace", "ase", "pymatgen"],
+    "title": "Run MACE On A Materials Project Structure",
+    "prompt": "I got a pymatgen Structure from Materials Project and want to relax it with MACE-MPA through ASE on a GPU. Show the conversion, the relaxation code, and the checks I should do before trusting the energy.",
+    "success_criteria": [
+      "Uses AseAtomsAdaptor for pymatgen to ASE conversion",
+      "Verifies atom count, species order, cell, PBC, and units after conversion",
+      "Uses mace.calculators mace_mp or MACECalculator as an ASE calculator",
+      "Records model name, device, dtype, element coverage, and provenance",
+      "Uses ASE optimizer/trajectory and reports final max force"
+    ],
+    "kdense_applicable": false
+  },
+  {
+    "id": "pymatgen-phase-diagram-lifepo4",
+    "skill": "pymatgen",
+    "title": "Materials Project Phase Diagram",
+    "prompt": "Write Python that gets Li-Fe-P-O entries from Materials Project, builds a phase diagram, and reports the energy above hull for LiFePO4. Include the checks I should record for reproducibility.",
+    "success_criteria": [
+      "Uses pymatgen MPRester or explicitly justified current Materials Project API client",
+      "Retrieves entries for the Li-Fe-P-O chemical system rather than scraping JSON",
+      "Builds a PhaseDiagram and reports eV/atom energy above hull",
+      "Records API key/client, material IDs or composition target, entry set, database/provenance, and compatibility assumptions",
+      "Avoids mixing arbitrary DFT total energies with MP entries without compatibility processing"
+    ],
+    "kdense_applicable": true
+  },
+  {
+    "id": "py4dstem-virtual-image-bragg",
+    "skill": "py4dstem",
+    "title": "4D-STEM Virtual Imaging And Bragg Detection",
+    "prompt": "I have a 4D-STEM HDF5 file and want to make virtual bright-field and annular dark-field images, then detect Bragg disks for later strain mapping. Write a py4DSTEM workflow and list the checks before trusting results.",
+    "success_criteria": [
+      "Uses py4DSTEM read/import_file and locates a DataCube",
+      "Prints datacube shape and identifies scan and diffraction axes",
+      "Inspects mean/max diffraction pattern before choosing detector geometry",
+      "Uses py4DSTEM virtual image and Bragg disk APIs rather than arbitrary NumPy sums",
+      "Mentions beam center, calibration, masks, probe/template, thresholds, and version boundaries"
+    ],
+    "kdense_applicable": false
+  },
+  {
+    "id": "openmm-prepare-run-md",
+    "skill": "openmm",
+    "title": "Prepare And Run OpenMM MD",
+    "prompt": "Write an OpenMM script that loads input.pdb, adds missing hydrogens and solvent, uses Amber14 with TIP3P-FB water, minimizes, runs a short Langevin simulation on CUDA, and writes trajectory and state data. Include checks for common setup failures.",
+    "success_criteria": [
+      "Uses modern openmm/openmm.app/openmm.unit imports",
+      "Uses PDBFile, Modeller, ForceField, createSystem, LangevinMiddleIntegrator, and Simulation",
+      "Uses unit-bearing quantities for temperature, cutoff, timestep, padding, and friction",
+      "Adds trajectory and state reporters",
+      "Checks force-field coverage, protonation, ligands, box vectors, extra particles, platform, precision, and energy/temperature diagnostics"
+    ],
+    "kdense_applicable": false
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "skill": "mace",
+      "candidate": "original",
+      "split": "heldout",
+      "score": 0.6666666666666666,
+      "passed": 10,
+      "total": 15,
+      "results": "eval/optimization-mace/results/mace/original/heldout.jsonl"
+    },
+    {
+      "skill": "mace",
+      "candidate": "candidate-notes",
+      "split": "heldout",
+      "score": 0.7333333333333333,
+      "passed": 11,
+      "total": 15,
+      "results": "eval/optimization-mace/results/mace/candidate-notes/heldout.jsonl"
+    }
+  ],
+  "decisions": [
+    {
+      "skill": "mace",
+      "selected": "original",
+      "reason": "missing train/dev split; scored splits: heldout",
+      "promote": "original",
+      "promotion_reason": "no train/dev selection surface"
+    }
+  ]
+}

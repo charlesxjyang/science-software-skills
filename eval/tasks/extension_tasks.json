@@ -1,0 +1,650 @@
+[
+  {
+    "id": "ase-env-relax-trajectory",
+    "skill": "ase",
+    "title": "Atomistic Relaxation With Trajectory",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a periodic crystal structure file and need Python that attaches an energy/force model, relaxes the atoms, saves the relaxation path, and reports checks before trusting the result.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic scipy optimization or ad hoc arrays",
+      "Uses canonical package objects/APIs for structures, calculators, and optimizers",
+      "Preserves atomistic representation details such as species, cell, units, and periodic boundary conditions",
+      "Follows the documented workflow sequence for read, attach calculator, optimize, and write outputs",
+      "Records diagnostics and provenance including calculator settings, convergence, energy, forces, stress or cell behavior, and versions"
+    ],
+    "rubric_terms": [["ase"], ["Atoms"], ["calculator"], ["BFGS", "trajectory"], ["forces", "energy"]],
+    "doc_sources": ["https://wiki.fysik.dtu.dk/ase/", "https://wiki.fysik.dtu.dk/ase/tutorials/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "ase-env-md-logging",
+    "skill": "ase",
+    "title": "Atomistic Dynamics With Logging",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I want to run a short atomistic molecular-dynamics demo from a structure, attach a force model, write a trajectory, and monitor temperature and energy during the run.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of implementing an MD loop from scratch",
+      "Uses canonical package objects/APIs for atomistic structures, calculators, dynamics, and trajectory writing",
+      "Preserves domain representation details such as species, cell, units, timestep, thermostat, and periodic boundaries",
+      "Follows the documented workflow sequence for initialization, velocity/thermostat setup, dynamics execution, and output",
+      "Records diagnostics and provenance including calculator settings, timestep, ensemble, temperature, energy drift, trajectory path, and versions"
+    ],
+    "rubric_terms": [["ase"], ["Atoms"], ["calculator"], ["VelocityVerlet", "Langevin", "MolecularDynamics"], ["trajectory", "temperature"]],
+    "doc_sources": ["https://wiki.fysik.dtu.dk/ase/ase/md.html", "https://wiki.fysik.dtu.dk/ase/ase/io/io.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pymatgen-env-phase-diagram",
+    "skill": "pymatgen",
+    "title": "Phase Stability From Materials Entries",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need Python that pulls entries for a Li-Fe-P-O chemical system, builds a phase-stability analysis, and reports the energy above hull for LiFePO4 with reproducibility checks.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of manual convex-hull code",
+      "Uses canonical package objects/APIs for Materials Project entries and phase diagrams",
+      "Preserves materials thermodynamics details such as compositions, entries, compatibility, and eV/atom units",
+      "Follows the documented workflow sequence for retrieving entries, building a phase diagram, and computing energy above hull",
+      "Records diagnostics and provenance including entry IDs, database/client version, compatibility assumptions, target composition, and query date"
+    ],
+    "rubric_terms": [["pymatgen"], ["MPRester"], ["PhaseDiagram"], ["eV/atom", "hull"], ["compatibility", "entries"]],
+    "doc_sources": ["https://pymatgen.org/", "https://matgenb.materialsvirtuallab.org/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pymatgen-env-structure-transform",
+    "skill": "pymatgen",
+    "title": "Crystal Structure Standardization",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a CIF file and need to inspect the crystal structure, standardize or reduce it, check symmetry, and save enough metadata so later calculations can be reproduced.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of treating the file as a generic table",
+      "Uses canonical package objects/APIs for structures, symmetry analysis, and file I/O",
+      "Preserves crystallographic representation details such as lattice, species, coordinates, occupancies, and units",
+      "Follows the documented workflow sequence for reading, validating, symmetry analysis, transformation, and writing",
+      "Records diagnostics and provenance including formula, space group, tolerances, transformation choices, input/output paths, and versions"
+    ],
+    "rubric_terms": [["pymatgen"], ["Structure"], ["SpacegroupAnalyzer"], ["CIF", "symmetry"], ["space group", "version"]],
+    "doc_sources": ["https://pymatgen.org/pymatgen.core.html", "https://pymatgen.org/pymatgen.symmetry.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "rdkit-env-smiles-fingerprints",
+    "skill": "rdkit",
+    "title": "Molecular Fingerprints For Activity Modeling",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a CSV of SMILES strings and activities. Build molecular features for a quick classification model, including invalid-molecule handling and provenance.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of string parsing or generic graph code",
+      "Uses canonical package objects/APIs for molecule parsing, sanitization, and fingerprints or descriptors",
+      "Preserves cheminformatics representation details such as molecules, invalid rows, stereochemistry, and feature settings",
+      "Follows the documented workflow sequence for parsing molecules, generating features, splitting data, and fitting a model",
+      "Records diagnostics and provenance including fingerprint radius/size or descriptor set, sanitization choices, invalid rows, random seed, and versions"
+    ],
+    "rubric_terms": [["rdkit"], ["MolFromSmiles"], ["Morgan", "fingerprint"], ["invalid"], ["radius", "bit", "version"]],
+    "doc_sources": ["https://www.rdkit.org/docs/", "https://www.rdkit.org/docs/Cookbook.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "rdkit-env-conformer-descriptors",
+    "skill": "rdkit",
+    "title": "Conformers And 3D Descriptors",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a set of small-molecule SMILES and want 3D conformers plus basic shape descriptors. Include failure handling and checks before using the features.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic coordinate generation",
+      "Uses canonical package objects/APIs for molecule parsing, hydrogen addition, embedding, optimization, and descriptors",
+      "Preserves cheminformatics representation details such as protonation, stereochemistry, conformer IDs, and force-field settings",
+      "Follows the documented workflow sequence for parse, add hydrogens, embed, optimize, compute descriptors, and export",
+      "Records diagnostics and provenance including embedding parameters, force field, failed molecules, random seed, conformer count, and versions"
+    ],
+    "rubric_terms": [["rdkit"], ["MolFromSmiles"], ["AddHs"], ["EmbedMolecule", "ETKDG"], ["MMFF", "conformer"]],
+    "doc_sources": ["https://www.rdkit.org/docs/GettingStartedInPython.html", "https://www.rdkit.org/docs/Cookbook.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "mace-env-mlip-relax",
+    "skill": "mace",
+    "title": "Pretrained MLIP Relaxation",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I want to relax a periodic crystal with a machine-learned interatomic potential, then inspect energies, forces, and reproducibility metadata. Show the workflow.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of training a generic neural network or using scipy directly",
+      "Uses canonical package objects/APIs for pretrained interatomic-potential calculators",
+      "Preserves atomistic representation details such as structure, cell, periodic boundaries, units, and model settings",
+      "Follows the documented workflow sequence for loading model/calculator, attaching to atoms, relaxing, and writing outputs",
+      "Records diagnostics and provenance including model path or preset, device, dtype, calculator settings, energy/forces/stress, and versions"
+    ],
+    "rubric_terms": [["MACE"], ["MACECalculator", "mace_mp"], ["ASE", "calculator"], ["forces", "energy"], ["device", "dtype", "model"]],
+    "doc_sources": ["https://mace-docs.readthedocs.io/", "https://mace-docs.readthedocs.io/en/latest/guide/foundation_models.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "mace-env-md-foundation-model",
+    "skill": "mace",
+    "title": "Foundation-Model MD",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need a short atomistic dynamics demo using a pretrained equivariant force model, including how to choose device/precision and monitor whether the simulation is sane.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic PyTorch model code",
+      "Uses canonical package objects/APIs for pretrained force-field calculators and atomistic dynamics integration",
+      "Preserves domain representation details such as units, device, dtype, cell, periodicity, and model provenance",
+      "Follows the documented workflow sequence for loading a model, attaching a calculator, initializing dynamics, and writing outputs",
+      "Records diagnostics and provenance including temperature, energy drift, forces, timestep, model name/path, device, dtype, and versions"
+    ],
+    "rubric_terms": [["MACE"], ["mace_mp", "MACECalculator"], ["device", "dtype"], ["Langevin", "VelocityVerlet"], ["trajectory", "energy"]],
+    "doc_sources": ["https://mace-docs.readthedocs.io/en/latest/guide/foundation_models.html", "https://mace-docs.readthedocs.io/en/latest/guide/ase.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "impedance-env-eis-fit",
+    "skill": "impedance",
+    "title": "EIS Equivalent-Circuit Fitting",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have frequency, Zreal, and Zimag columns from an EIS experiment. Fit a Randles-like equivalent circuit with a CPE and Warburg element, plot diagnostics, and list checks before trusting the fitted parameters.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of scipy.optimize curve fitting from scratch",
+      "Uses canonical package objects/APIs for equivalent-circuit definition, fitting, prediction, and plotting",
+      "Preserves electrochemical representation details such as complex impedance, frequency ordering, circuit strings, and parameter units",
+      "Follows the documented workflow sequence for loading data, constructing complex arrays, fitting a circuit, predicting, and plotting residuals",
+      "Records diagnostics and provenance including initial guesses, fitted names/units, confidence or residual checks, preprocessing choices, and versions"
+    ],
+    "rubric_terms": [["impedance"], ["CustomCircuit"], ["CPE", "Warburg"], ["frequency", "complex"], ["Nyquist", "parameter"]],
+    "doc_sources": ["https://impedancepy.readthedocs.io/", "https://impedancepy.readthedocs.io/en/latest/examples/plotting_example.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "impedance-env-lin-kk",
+    "skill": "impedance",
+    "title": "EIS Consistency Check",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. Before fitting an EIS circuit, I want to check whether the measured spectrum is broadly consistent with linear, causal, stable behavior and inspect residuals.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of writing a custom numerical validation from scratch",
+      "Uses canonical package objects/APIs for linear Kramers-Kronig style validation and plotting",
+      "Preserves electrochemical representation details such as complex impedance, frequencies, residuals, and units",
+      "Follows the documented workflow sequence for loading spectra, running validation, inspecting residuals, and deciding whether circuit fitting is appropriate",
+      "Records diagnostics and provenance including validation settings, residual thresholds, spectrum preprocessing, caveats, and versions"
+    ],
+    "rubric_terms": [["impedance"], ["linKK"], ["frequency", "complex"], ["residual"], ["causal", "linear", "stable"]],
+    "doc_sources": ["https://impedancepy.readthedocs.io/en/latest/validation.html", "https://impedancepy.readthedocs.io/en/latest/examples/validation_example.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "py4dstem-env-virtual-bragg",
+    "skill": "py4dstem",
+    "title": "4D-STEM Virtual Imaging And Bragg Detection",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a 4D-STEM HDF5 file and want virtual bright-field/dark-field images plus Bragg disk detection for later strain mapping. Include the checks before quantitative interpretation.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of treating the file as an arbitrary NumPy array",
+      "Uses canonical package objects/APIs for datacube reading, virtual imaging, and Bragg disk detection",
+      "Preserves microscopy representation details such as scan axes, diffraction axes, calibration, beam center, and detector geometry",
+      "Follows the documented workflow sequence for locating data, inspecting diffraction patterns, choosing detectors, detecting peaks, and saving outputs",
+      "Records diagnostics and provenance including masks, probe/template, thresholds, calibration, version boundaries, and visual overlays"
+    ],
+    "rubric_terms": [["py4DSTEM"], ["DataCube"], ["shape", "axes"], ["virtual", "Bragg"], ["calibration", "beam", "threshold"]],
+    "doc_sources": ["https://py4dstem.readthedocs.io/", "https://github.com/py4dstem/py4DSTEM_tutorials"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "py4dstem-env-com-dpc",
+    "skill": "py4dstem",
+    "title": "4D-STEM Center-Of-Mass Analysis",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a scanning nanobeam diffraction dataset and want to compute center-of-mass/DPC-style maps after checking calibration and masks.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic image summations",
+      "Uses canonical package objects/APIs for datacubes, calibration, masks, and center-of-mass analysis",
+      "Preserves microscopy representation details such as scan axes, diffraction axes, detector calibration, and beam center",
+      "Follows the documented workflow sequence for reading data, inspecting diffraction patterns, applying masks, computing maps, and visualizing outputs",
+      "Records diagnostics and provenance including axis order, calibration units, mask choices, center definition, preprocessing, and versions"
+    ],
+    "rubric_terms": [["py4DSTEM"], ["DataCube"], ["calibration"], ["center", "mass"], ["mask", "axes"]],
+    "doc_sources": ["https://py4dstem.readthedocs.io/en/latest/examples/first_steps.html", "https://py4dstem.readthedocs.io/en/latest/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "hyperspy-env-spectral-map",
+    "skill": "hyperspy",
+    "title": "Spectral Image Analysis",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a microscopy spectrum-image file with spatial axes and an energy-loss axis. Load it lazily if possible, inspect metadata/axes, fit peaks or run decomposition, and save reproducible outputs.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of raw HDF5/NumPy array handling",
+      "Uses canonical package objects/APIs for loading signal objects, axes, metadata, modeling, or decomposition",
+      "Preserves microscopy representation details such as signal type, navigation/signal axes, units, scale, and metadata",
+      "Follows the documented workflow sequence for loading, inspecting axes/metadata, preprocessing, modeling or decomposition, and exporting",
+      "Records diagnostics and provenance including lazy/eager loading, calibration, preprocessing, components/settings, and versions"
+    ],
+    "rubric_terms": [["hyperspy"], ["hs.load"], ["axes", "metadata"], ["lazy"], ["model", "decomposition"]],
+    "doc_sources": ["https://hyperspy.org/hyperspy-doc/current/", "https://hyperspy.org/hyperspy-doc/current/user_guide/index.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "hyperspy-env-eds-eels-axes",
+    "skill": "hyperspy",
+    "title": "Spectroscopy Axes And Metadata",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need to load an electron microscopy spectroscopy map, verify the energy axis calibration and spatial scale, denoise or decompose it, and export plots/data with metadata.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of flattening the spectrum image into a generic matrix",
+      "Uses canonical package objects/APIs for signals, axes managers, metadata, preprocessing, and decomposition",
+      "Preserves spectroscopy representation details such as energy axis, spatial navigation axes, units, scale, and signal metadata",
+      "Follows the documented workflow sequence for loading, verifying axes, preprocessing, decomposing/modeling, plotting, and exporting",
+      "Records diagnostics and provenance including calibration values, lazy status, preprocessing parameters, decomposition settings, and versions"
+    ],
+    "rubric_terms": [["hyperspy"], ["axes_manager"], ["metadata"], ["decomposition"], ["scale", "units"]],
+    "doc_sources": ["https://hyperspy.org/hyperspy-doc/current/user_guide/signal.html", "https://hyperspy.org/hyperspy-doc/current/user_guide/axes.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pybamm-env-battery-discharge",
+    "skill": "pybamm",
+    "title": "Battery Experiment Simulation",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need to simulate a lithium-ion cell under a discharge/rest/charge experiment, plot voltage versus time, and document checks before trusting the simulation.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of writing custom scipy ODE code",
+      "Uses canonical package objects/APIs for battery models, parameters, experiments, simulations, and solutions",
+      "Preserves battery-model representation details such as model family, parameter set, protocol units, and solver settings",
+      "Follows the documented workflow sequence for creating a model, applying parameters/experiment, solving, plotting, and inspecting outputs",
+      "Records diagnostics and provenance including model, parameter set, experiment protocol, solver settings, termination events, units, and versions"
+    ],
+    "rubric_terms": [["pybamm"], ["lithium-ion"], ["Experiment"], ["Simulation"], ["parameter", "solver", "version"]],
+    "doc_sources": ["https://docs.pybamm.org/", "https://docs.pybamm.org/en/latest/source/examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pybamm-env-parameter-sweep",
+    "skill": "pybamm",
+    "title": "Battery Parameter Sweep",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I want to compare how a lithium-ion cell model responds when I vary a transport or capacity parameter, while keeping the experiment protocol and solver settings reproducible.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic ODE sweeps",
+      "Uses canonical package objects/APIs for parameter values, simulations, experiments, and solution extraction",
+      "Preserves battery-model representation details such as model choice, parameter names, units, protocol, and solver",
+      "Follows the documented workflow sequence for defining a base model, changing parameters, solving repeated simulations, and comparing outputs",
+      "Records diagnostics and provenance including parameter set, varied parameter values/units, solver tolerances, event status, output variables, and versions"
+    ],
+    "rubric_terms": [["pybamm"], ["ParameterValues"], ["Experiment"], ["Simulation"], ["solver", "parameter"]],
+    "doc_sources": ["https://docs.pybamm.org/en/latest/source/examples/notebooks/parameterization/parameterization.html", "https://docs.pybamm.org/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pyscf-env-molecule-dft",
+    "skill": "pyscf",
+    "title": "Molecular DFT Calculation",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I want to compute a small molecule's DFT energy and inspect whether the electronic-structure calculation converged. Include a compact workflow and reproducibility metadata.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of manually diagonalizing matrices with NumPy/SciPy",
+      "Uses canonical package objects/APIs for molecular setup and SCF/DFT calculations",
+      "Preserves quantum-chemistry representation details such as basis, charge, spin, coordinates, units, and functional",
+      "Follows the documented workflow sequence for building the molecule, selecting a method, running the kernel, and inspecting convergence",
+      "Records diagnostics and provenance including total energy, convergence flag, orbital diagnostics, grid/basis/settings, thresholds, and versions"
+    ],
+    "rubric_terms": [["pyscf"], ["gto"], ["basis", "charge", "spin"], ["RKS"], ["converged", "energy"]],
+    "doc_sources": ["https://pyscf.org/", "https://pyscf.org/quickstart.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pyscf-env-open-shell",
+    "skill": "pyscf",
+    "title": "Open-Shell Electronic Structure",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need to compute an open-shell molecule, set the right charge and spin, choose a suitable mean-field reference, and check convergence plus spin diagnostics.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic linear algebra",
+      "Uses canonical package objects/APIs for molecule construction and unrestricted or open-shell mean-field calculations",
+      "Preserves quantum-chemistry representation details such as spin convention, charge, multiplicity, basis, and units",
+      "Follows the documented workflow sequence for setting molecule metadata, choosing a reference, running the calculation, and checking diagnostics",
+      "Records diagnostics and provenance including convergence, total energy, spin expectation/contamination, basis, functional or method, and versions"
+    ],
+    "rubric_terms": [["pyscf"], ["gto"], ["spin"], ["UHF", "UKS"], ["converged", "spin"]],
+    "doc_sources": ["https://pyscf.org/user/gto.html", "https://pyscf.org/user/scf.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "openmm-env-md-setup",
+    "skill": "openmm",
+    "title": "Biomolecular MD Setup",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have input.pdb and want to add hydrogens and solvent, minimize, run a short Langevin molecular dynamics simulation, and write trajectory/state data with setup checks.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of a hand-written molecular dynamics integrator",
+      "Uses canonical package objects/APIs for topology, force field, modeller, system, integrator, simulation, and reporters",
+      "Preserves molecular-simulation representation details such as units, topology, box, constraints, force-field/water-model choices, and platform",
+      "Follows the documented workflow sequence for loading, preparing, creating a system, minimizing, simulating, and writing outputs",
+      "Records diagnostics and provenance including force-field coverage, protonation, ligands, extra particles, platform/precision, energy/temperature, and versions"
+    ],
+    "rubric_terms": [["openmm"], ["PDBFile", "Modeller"], ["ForceField", "createSystem"], ["Langevin", "Simulation"], ["reporter", "unit"]],
+    "doc_sources": ["https://docs.openmm.org/", "https://docs.openmm.org/latest/userguide/application/02_running_sims.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "openmm-env-custom-force",
+    "skill": "openmm",
+    "title": "Custom Force Simulation",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need a compact molecular simulation demo with a custom restraint or biasing potential, correct units, minimization, reporters, and checks that the force was added to the system.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of custom integration code",
+      "Uses canonical package objects/APIs for systems, custom forces, integrators, contexts/simulations, and reporters",
+      "Preserves molecular-simulation representation details such as unit-bearing parameters, topology, particles/groups, and platform settings",
+      "Follows the documented workflow sequence for defining a system, adding a custom force, initializing simulation, minimizing/running, and inspecting outputs",
+      "Records diagnostics and provenance including force expression, parameters, units, energy contribution, platform/precision, reporter outputs, and versions"
+    ],
+    "rubric_terms": [["openmm"], ["Custom", "Force"], ["unit"], ["Simulation", "Integrator"], ["reporter", "energy"]],
+    "doc_sources": ["https://docs.openmm.org/latest/userguide/theory/03_custom_forces.html", "https://openmm.github.io/openmm-cookbook/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "matminer-env-composition-descriptors",
+    "skill": "matminer",
+    "title": "Composition Descriptors For Materials ML",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a CSV with columns formula and band_gap. Build a feature table and quick regression model for the band gaps. Include what provenance and diagnostics I should save.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of manual periodic-table dictionaries or generic numeric summaries",
+      "Uses canonical package objects/APIs for composition parsing and materials featurization",
+      "Preserves materials-informatics representation details such as composition objects, generated feature labels, missing values, and units",
+      "Follows the documented workflow sequence for converting formulas, featurizing, splitting/modeling, and saving features",
+      "Records diagnostics and provenance including featurizer class/preset, citations, failed rows, feature names, split details, leakage checks, and versions"
+    ],
+    "rubric_terms": [["matminer"], ["Composition"], ["ElementProperty", "magpie", "featurize_dataframe"], ["feature_labels"], ["citations", "NaN", "version"]],
+    "doc_sources": ["https://hackingmaterials.lbl.gov/matminer/", "https://hackingmaterials.lbl.gov/matminer/tutorials.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "matminer-env-structure-descriptors",
+    "skill": "matminer",
+    "title": "Structure Descriptors For Materials ML",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have crystal structures and formation energies. Build a materials-aware structure-descriptor table for a regression model and explain how to handle failed structures.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of arbitrary NumPy structure summaries",
+      "Uses canonical package objects/APIs for structure featurization and generated-label tracking",
+      "Preserves materials-informatics representation details such as structure objects, oxidation/neighbor assumptions, generated features, and missing values",
+      "Follows the documented workflow sequence for loading structures, applying structure/site featurizers, splitting/modeling, and auditing rows",
+      "Records diagnostics and provenance including featurizer class, citations, feature labels, failed structures, train/test leakage checks, and versions"
+    ],
+    "rubric_terms": [["matminer"], ["Structure"], ["featurize_dataframe"], ["feature_labels"], ["NaN", "citations"]],
+    "doc_sources": ["https://hackingmaterials.lbl.gov/matminer/featurizer_summary.html", "https://github.com/hackingmaterials/matminer_examples"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "atomate2-env-workflow-taskdoc",
+    "skill": "atomate2",
+    "title": "Local Materials Workflow With Task Document",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a crystal structure object and want a reproducible local workflow demo that relaxes it with a force-field calculator, then gives me a structured result document I can inspect later. Show Python and the provenance checks.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of a one-off scipy/subprocess script",
+      "Uses canonical package objects/APIs for makers, jobs/flows, local execution, and task documents",
+      "Preserves workflow representation details such as structure input, maker settings, job UUIDs, stores/folders, and result documents",
+      "Follows the documented workflow sequence for constructing a maker, creating a job or flow, executing locally, and inspecting output",
+      "Records diagnostics and provenance including maker class, versions, calculator/model settings, job UUIDs, execution/store context, and scientific checks"
+    ],
+    "rubric_terms": [["atomate2"], [".make", "job"], ["run_locally"], ["task", "document"], ["maker", "version", "provenance"]],
+    "doc_sources": ["https://materialsproject.github.io/atomate2/", "https://materialsproject.github.io/jobflow/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "atomate2-env-vasp-workflow-plan",
+    "skill": "atomate2",
+    "title": "VASP Workflow Planning",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need to plan a reproducible VASP relaxation workflow from a crystal structure. I do not need to run VASP in the answer, but I need workflow objects, execution assumptions, and checks before trusting outputs.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of hand-written shell retry loops",
+      "Uses canonical package objects/APIs for VASP makers, jobs/flows, input sets, and task documents",
+      "Preserves workflow representation details such as structure, input-set settings, executable/POTCAR requirements, job UUIDs, and stores",
+      "Follows the documented workflow sequence for constructing a workflow, checking execution requirements, running/submitting, and inspecting task documents",
+      "Records diagnostics and provenance including maker class, versions, executable/POTCAR assumptions, store/folder context, convergence, and scientific outputs"
+    ],
+    "rubric_terms": [["atomate2"], ["VASP"], ["maker"], ["POTCAR", "executable"], ["task", "document"]],
+    "doc_sources": ["https://materialsproject.github.io/atomate2/user/codes/vasp.html", "https://materialsproject.github.io/atomate2/user/index.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "ase-env-neb-path",
+    "skill": "ase",
+    "title": "Minimum-Energy Path Setup",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have initial and final periodic structures for an atom hop. I need Python to interpolate images, attach the same force model to each image, optimize a minimum-energy path, and save checks before trusting the barrier.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic scipy interpolation or array optimization",
+      "Uses canonical package objects/APIs for atomistic images, calculators, path interpolation, and path optimization",
+      "Preserves atomistic representation details such as species ordering, cell, periodic boundaries, units, constraints, and image count",
+      "Follows the documented workflow sequence for reading endpoints, creating images, interpolating, attaching calculators, optimizing, and writing outputs",
+      "Records diagnostics and provenance including endpoint consistency, calculator settings, path files, force convergence, barrier estimate, and versions"
+    ],
+    "rubric_terms": [["ase"], ["Atoms", "NEB"], ["interpolate"], ["BFGS", "FIRE"], ["trajectory", "barrier", "forces"]],
+    "doc_sources": ["https://wiki.fysik.dtu.dk/ase/ase/neb.html", "https://wiki.fysik.dtu.dk/ase/tutorials/neb/idpp.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pymatgen-env-disordered-structure-ordering",
+    "skill": "pymatgen",
+    "title": "Disordered Crystal Ordering",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a CIF with partial occupancies and need to generate ordered candidate structures, inspect symmetry/composition, and write reproducible outputs for later calculations.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of treating occupancies as generic table values",
+      "Uses canonical package objects/APIs for crystal structures, disordered sites, transformations or enumeration, and file output",
+      "Preserves crystallographic representation details such as lattice, species, occupancies, oxidation assumptions, supercell size, and units",
+      "Follows the documented workflow sequence for reading, validating disorder, generating ordered candidates, ranking/filtering, and writing structures",
+      "Records diagnostics and provenance including transformation settings, number of candidates, energy/ranking assumptions, composition checks, and versions"
+    ],
+    "rubric_terms": [["pymatgen"], ["Structure"], ["partial", "occupancy", "disordered"], ["OrderDisorderedStructureTransformation", "EnumerateStructureTransformation"], ["CIF", "symmetry", "composition"]],
+    "doc_sources": ["https://pymatgen.org/pymatgen.transformations.html", "https://matgenb.materialsvirtuallab.org/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "rdkit-env-substructure-scaffolds",
+    "skill": "rdkit",
+    "title": "Substructure Filtering And Scaffolds",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a CSV of SMILES strings and want to filter molecules matching a SMARTS motif, compute core scaffolds, and report invalid rows plus checks for stereochemistry/protonation assumptions.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of custom string matching or generic graph code",
+      "Uses canonical package objects/APIs for molecule parsing, SMARTS queries, substructure matching, and scaffold extraction",
+      "Preserves cheminformatics representation details such as sanitization, invalid molecules, stereochemistry, aromaticity, and protonation assumptions",
+      "Follows the documented workflow sequence for loading SMILES, constructing query molecules, matching/filtering, extracting scaffolds, and exporting results",
+      "Records diagnostics and provenance including query pattern, invalid rows, match counts, scaffold method, sanitization choices, and versions"
+    ],
+    "rubric_terms": [["rdkit"], ["MolFromSmiles"], ["MolFromSmarts", "HasSubstructMatch"], ["MurckoScaffold"], ["invalid", "sanitize", "stereo"]],
+    "doc_sources": ["https://www.rdkit.org/docs/GettingStartedInPython.html", "https://www.rdkit.org/docs/Cookbook.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "mace-env-batch-force-screen",
+    "skill": "mace",
+    "title": "Batch Force Screening With A Foundation Model",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a folder of candidate crystal structures and want to screen them with a pretrained equivariant interatomic potential, saving energies, max forces, stress where available, and enough metadata to reproduce the model choice.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic PyTorch inference or sklearn regression",
+      "Uses canonical package objects/APIs for pretrained interatomic-potential calculators and atomistic structure handling",
+      "Preserves atomistic representation details such as species, cell, periodic boundaries, units, device, dtype, and model coverage",
+      "Follows the documented workflow sequence for loading structures, selecting a foundation model, attaching calculators, evaluating properties, and writing a summary table",
+      "Records diagnostics and provenance including model name/path, device, dtype, package versions, failed structures, energy/force units, and coverage checks"
+    ],
+    "rubric_terms": [["MACE"], ["mace_mp", "MACECalculator"], ["ASE", "Atoms", "calculator"], ["get_potential_energy", "get_forces", "stress"], ["device", "dtype", "model"]],
+    "doc_sources": ["https://mace-docs.readthedocs.io/en/latest/guide/foundation_models.html", "https://mace-docs.readthedocs.io/en/latest/guide/ase.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "impedance-env-preprocess-circuit-compare",
+    "skill": "impedance",
+    "title": "EIS Preprocessing And Circuit Comparison",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have frequency, Zreal, and Zimag columns from a noisy electrochemical spectrum. I want to trim an unreliable frequency range, compare two plausible equivalent circuits, plot residuals, and decide which fit is defensible.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of raw scipy curve fitting from scratch",
+      "Uses canonical package objects/APIs for preprocessing, equivalent-circuit construction, fitting, prediction, and plotting",
+      "Preserves electrochemical representation details such as complex spectra, frequency ordering, circuit strings, parameter units, and residuals",
+      "Follows the documented workflow sequence for loading, filtering frequencies, fitting candidate circuits, predicting spectra, and comparing residual diagnostics",
+      "Records diagnostics and provenance including frequency window, initial guesses, fitted parameter names/units, residual criteria, preprocessing choices, and versions"
+    ],
+    "rubric_terms": [["impedance"], ["CustomCircuit"], ["preprocessing", "ignoreBelowX", "cropFrequencies"], ["frequency", "complex"], ["Nyquist", "residual", "parameter"]],
+    "doc_sources": ["https://impedancepy.readthedocs.io/en/latest/examples/fitting_example.html", "https://impedancepy.readthedocs.io/en/latest/examples/plotting_example.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "py4dstem-env-bragg-strain-map",
+    "skill": "py4dstem",
+    "title": "4D-STEM Bragg Strain Mapping",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have a scanning nanobeam diffraction dataset and need a workflow to detect Bragg disks, choose a reference lattice, produce strain/orientation maps, and state the calibration checks before quantitative claims.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of generic image peak finding on arbitrary arrays",
+      "Uses canonical package objects/APIs for datacube handling, Bragg disk detection, vector maps, and strain/orientation analysis",
+      "Preserves microscopy representation details such as scan axes, diffraction axes, reciprocal calibration, beam center, reference lattice, and distortion corrections",
+      "Follows the documented workflow sequence for inspecting diffraction data, calibrating, detecting peaks, refining vectors, selecting references, and mapping strain",
+      "Records diagnostics and provenance including detection thresholds, probe/kernel settings, calibration, reference choice, overlays, masks, and versions"
+    ],
+    "rubric_terms": [["py4DSTEM"], ["DataCube"], ["Bragg"], ["strain", "orientation", "reference"], ["calibration", "beam", "distortion"]],
+    "doc_sources": ["https://py4dstem.readthedocs.io/", "https://github.com/py4dstem/py4DSTEM_tutorials"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "hyperspy-env-eels-edge-model",
+    "skill": "hyperspy",
+    "title": "EELS Edge Modeling",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have an electron energy-loss spectrum image and need to calibrate axes, set metadata, fit a background and core-loss edge model, then export maps with checks on microscope parameters and signal type.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of flattening spectra into generic arrays",
+      "Uses canonical package objects/APIs for signals, axes managers, metadata, EELS setup, model fitting, and map export",
+      "Preserves spectroscopy representation details such as energy axis, navigation axes, units, microscope metadata, signal type, and binned state",
+      "Follows the documented workflow sequence for loading, verifying calibration/metadata, setting signal type, building/fitting a model, and exporting quantitative outputs",
+      "Records diagnostics and provenance including energy scale, convergence/fit residuals, edge/background choices, microscope parameters, lazy state, and versions"
+    ],
+    "rubric_terms": [["hyperspy"], ["axes_manager"], ["metadata"], ["EELS", "exspy", "signal_type"], ["model", "fit", "background"]],
+    "doc_sources": ["https://hyperspy.org/hyperspy-doc/current/user_guide/signal.html", "https://hyperspy.org/exspy/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pybamm-env-degradation-cycle-study",
+    "skill": "pybamm",
+    "title": "Battery Degradation Cycling Study",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need to simulate repeated lithium-ion charge/discharge cycles with a degradation mechanism enabled, track capacity fade, and document solver/model checks before comparing scenarios.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of writing custom scipy ODE cycling loops",
+      "Uses canonical package objects/APIs for battery model options, parameter sets, experiments, simulations, solvers, and solution outputs",
+      "Preserves battery-model representation details such as model family, degradation option, protocol units, parameter names, solver tolerances, and output variables",
+      "Follows the documented workflow sequence for selecting model/options, applying parameters, defining cycling experiment, solving, and extracting capacity-fade metrics",
+      "Records diagnostics and provenance including model/options, parameter set, cycle protocol, termination events, solver settings, output variables, and versions"
+    ],
+    "rubric_terms": [["pybamm"], ["lithium-ion", "SEI", "degradation"], ["Experiment"], ["Simulation"], ["capacity", "solver", "parameter"]],
+    "doc_sources": ["https://docs.pybamm.org/", "https://docs.pybamm.org/en/latest/source/examples/notebooks/models/SEI-on-particle-cracks.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "pyscf-env-geometry-optimization",
+    "skill": "pyscf",
+    "title": "Quantum-Chemistry Geometry Optimization",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I want to optimize the geometry of a small molecule with an electronic-structure method, then report final energy, coordinates, convergence, and spin/charge/basis assumptions.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of manual linear algebra or generic scipy minimization",
+      "Uses canonical package objects/APIs for molecule construction, mean-field calculation, gradients, and geometry optimization",
+      "Preserves quantum-chemistry representation details such as charge, spin convention, basis, functional or method, coordinates, and units",
+      "Follows the documented workflow sequence for building the molecule, selecting method/basis, running SCF, invoking geometry optimization, and checking final results",
+      "Records diagnostics and provenance including convergence flags, final total energy, final coordinates, gradient/optimizer settings, spin diagnostics, and versions"
+    ],
+    "rubric_terms": [["pyscf"], ["gto"], ["basis", "charge", "spin"], ["geomopt", "Gradients", "optimize"], ["converged", "energy"]],
+    "doc_sources": ["https://pyscf.org/user/gto.html", "https://pyscf.org/user/geomopt.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "openmm-env-checkpoint-restart",
+    "skill": "openmm",
+    "title": "Molecular Dynamics Checkpoint Restart",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I have prepared topology/coordinate files and need a molecular dynamics workflow that minimizes, equilibrates, writes reporters and checkpoints, then resumes safely after an interrupted run.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of implementing a molecular dynamics integrator or restart system from scratch",
+      "Uses canonical package objects/APIs for topology/coordinates, force fields or systems, integrators, simulations, reporters, checkpoints, and state data",
+      "Preserves molecular-simulation representation details such as unit-bearing quantities, topology, box vectors, constraints, platform/precision, timestep, and ensemble",
+      "Follows the documented workflow sequence for loading inputs, creating system/integrator/simulation, minimizing/equilibrating, adding reporters/checkpoints, and restarting",
+      "Records diagnostics and provenance including force-field/system settings, platform, timestep, temperature/energy, checkpoint path, reporter intervals, and versions"
+    ],
+    "rubric_terms": [["openmm"], ["Simulation"], ["CheckpointReporter", "loadCheckpoint"], ["unit", "timestep"], ["StateDataReporter", "energy", "temperature"]],
+    "doc_sources": ["https://docs.openmm.org/latest/userguide/application/02_running_sims.html", "https://openmm.github.io/openmm-cookbook/"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "matminer-env-dataset-baseline",
+    "skill": "matminer",
+    "title": "Materials Benchmark Dataset Baseline",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I want to load a known materials benchmark table, inspect its formula/target columns, create composition-aware features, train a baseline model, and save feature/provenance metadata.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of manually downloading arbitrary CSVs and inventing periodic-table features",
+      "Uses canonical package objects/APIs for loading materials datasets, composition conversion, featurization, labels/citations, and modeling handoff",
+      "Preserves materials-informatics representation details such as formulas/compositions, target units, feature labels, missing values, and train/test leakage boundaries",
+      "Follows the documented workflow sequence for loading a dataset, auditing columns, converting compositions, featurizing, splitting/modeling, and saving outputs",
+      "Records diagnostics and provenance including dataset name/version, target units, featurizer class/preset, citations, failed rows, feature labels, split seed, and versions"
+    ],
+    "rubric_terms": [["matminer"], ["load_dataset"], ["Composition"], ["ElementProperty", "featurize_dataframe"], ["feature_labels", "citations", "NaN"]],
+    "doc_sources": ["https://hackingmaterials.lbl.gov/matminer/dataset_summary.html", "https://hackingmaterials.lbl.gov/matminer/tutorials.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  },
+  {
+    "id": "atomate2-env-phonon-flow-plan",
+    "skill": "atomate2",
+    "title": "Phonon Workflow Planning",
+    "prompt": "Available generic Python packages include: numpy, pandas, scipy, scikit-learn, matplotlib. I need to plan a reproducible phonon workflow for a crystal structure using a configured calculator backend. Show how to build workflow objects, note execution requirements, and describe checks on the resulting force constants/band structure.",
+    "success_criteria": [
+      "Selects the correct installed domain package instead of ad hoc subprocess loops or isolated force-displacement scripts",
+      "Uses canonical package objects/APIs for makers, jobs/flows, local or managed execution, and task documents",
+      "Preserves workflow representation details such as structure input, supercell/displacement settings, calculator/backend settings, job UUIDs, stores, and result documents",
+      "Follows the documented workflow sequence for constructing a maker, creating a flow, checking execution requirements, running/submitting, and inspecting outputs",
+      "Records diagnostics and provenance including maker class, versions, backend assumptions, displacement/supercell settings, job UUIDs, store context, and scientific checks"
+    ],
+    "rubric_terms": [["atomate2"], ["Phonon", "Maker"], [".make", "Flow", "job"], ["run_locally", "jobflow"], ["task", "document", "provenance"]],
+    "doc_sources": ["https://materialsproject.github.io/atomate2/user/codes/forcefields.html", "https://materialsproject.github.io/atomate2/user/index.html"],
+    "split": "heldout",
+    "kdense_applicable": false,
+    "hide_success_criteria": true
+  }
+]

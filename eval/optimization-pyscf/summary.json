@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "skill": "pyscf",
+      "candidate": "original",
+      "split": "heldout",
+      "score": 0.9333333333333333,
+      "passed": 14,
+      "total": 15,
+      "results": "eval/optimization-pyscf/results/pyscf/original/heldout.jsonl"
+    },
+    {
+      "skill": "pyscf",
+      "candidate": "candidate-notes",
+      "split": "heldout",
+      "score": 0.9333333333333333,
+      "passed": 14,
+      "total": 15,
+      "results": "eval/optimization-pyscf/results/pyscf/candidate-notes/heldout.jsonl"
+    }
+  ],
+  "decisions": [
+    {
+      "skill": "pyscf",
+      "selected": "original",
+      "reason": "missing train/dev split; scored splits: heldout",
+      "promote": "original",
+      "promotion_reason": "no train/dev selection surface"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "impedance-fit-randles-cpe-warburg",
+    "skill": "impedance",
+    "title": "Fit A Battery EIS Spectrum",
+    "prompt": "I have a CSV exported from a potentiostat with columns frequency, Zreal, Zimag. Fit it to R_0-p(R_1,CPE_1)-Wo_1, plot the Nyquist data and fit, and give me a small table of fitted parameter values with uncertainties. Write Python code I can adapt.",
+    "success_criteria": [
+      "Uses impedance.preprocessing.readCSV or clearly creates the equivalent complex Z array",
+      "Uses impedance.py CustomCircuit rather than hand-rolled scipy.optimize.curve_fit",
+      "Mentions ordered initial_guess, get_param_names, parameters_, and conf_",
+      "Plots raw data and predicted fit with plot_nyquist",
+      "Flags initial-guess sensitivity and residual inspection"
+    ]
+  },
+  {
+    "id": "impedance-validate-before-fitting",
+    "skill": "impedance",
+    "title": "Validate Before Fitting",
+    "prompt": "Before fitting my EIS spectrum, I want to check whether the data are physically consistent. I have arrays f and Z. What should I run in Python, and what should I inspect before trusting equivalent-circuit parameters?",
+    "success_criteria": [
+      "Uses impedance.validation.linKK",
+      "Explains causality, linearity, and stability as EIS assumptions",
+      "Plots or inspects real and imaginary residuals rather than relying only on one scalar",
+      "Notes c, max_M, and possible under- or over-fitting behavior",
+      "Avoids claiming Lin-KK proves the model circuit is correct"
+    ]
+  },
+  {
+    "id": "impedance-batch-fit-zplot",
+    "skill": "impedance",
+    "title": "Batch Fit Many ZPlot Files",
+    "prompt": "I have a folder of Scribner ZPlot .z files from replicate circuit measurements. Write Python that loops over the files, fits each to R0-p(R1,C1), saves the parameters to a DataFrame, and makes per-circuit Nyquist overlays.",
+    "success_criteria": [
+      "Uses glob plus impedance.preprocessing.readZPlot",
+      "Creates one CustomCircuit per file with the same circuit string and initial guess",
+      "Extracts labeled parameters via get_param_names and parameters_",
+      "Uses predict and plot_nyquist for overlays",
+      "Does not parse .z files manually unless impedance.py cannot read them"
+    ]
+  }
+]

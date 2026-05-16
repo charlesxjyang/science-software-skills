@@ -1,0 +1,16 @@
+[
+  {"name": "numpy", "version": "2.2.0"},
+  {"name": "ase", "version": "3.26.0"},
+  {"name": "pymatgen", "version": "2026.4.16"},
+  {"name": "rdkit", "version": "2026.03.2"},
+  {"name": "mace-torch", "version": "0.3.13"},
+  {"name": "impedance", "version": "1.7.1"},
+  {"name": "py4DSTEM", "version": "0.14.14"},
+  {"name": "hyperspy", "version": "2.4.0"},
+  {"name": "pybamm", "version": "26.4.0"},
+  {"name": "pyscf", "version": "2.11.0"},
+  {"name": "openmm", "version": "8.4.0"},
+  {"name": "matminer", "version": "0.9.3"},
+  {"name": "atomate2", "version": "0.0.21"},
+  {"name": "scipy", "version": "1.15.0"}
+]

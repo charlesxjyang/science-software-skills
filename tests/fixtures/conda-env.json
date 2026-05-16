@@ -1,0 +1,26 @@
+{
+  "name": "eis-demo",
+  "channels": ["conda-forge"],
+  "dependencies": [
+    "python=3.12",
+    "numpy=2.2",
+    "ase=3.26",
+    "pymatgen=2026.4.16",
+    "rdkit=2026.03.2",
+    "pip",
+    {
+      "pip": [
+        "mace-torch==0.3.13",
+        "impedance==1.7.1",
+        "py4DSTEM==0.14.14",
+        "hyperspy==2.4.0",
+        "pybamm==26.4.0",
+        "pyscf==2.11.0",
+        "openmm==8.4.0",
+        "matminer==0.9.3",
+        "atomate2==0.0.21",
+        "scipy>=1.15"
+      ]
+    }
+  ]
+}

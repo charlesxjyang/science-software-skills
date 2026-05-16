@@ -1,0 +1,786 @@
+{
+  "rows": [
+    {
+      "skill": "ase",
+      "variant": "baseline",
+      "score": 0.7333333333333333,
+      "passed": 11,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "ase-env-relax-trajectory",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "ase-env-md-logging",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "ase-env-neb-path",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        }
+      ]
+    },
+    {
+      "skill": "ase",
+      "variant": "package-skill",
+      "score": 0.8,
+      "passed": 12,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "ase-env-relax-trajectory",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "ase-env-md-logging",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "ase-env-neb-path",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        }
+      ]
+    },
+    {
+      "skill": "atomate2",
+      "variant": "baseline",
+      "score": 0.06666666666666667,
+      "passed": 1,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "atomate2-env-workflow-taskdoc",
+          "split": "heldout",
+          "passed": 0,
+          "total": 5,
+          "score": 0.0
+        },
+        {
+          "task_id": "atomate2-env-vasp-workflow-plan",
+          "split": "heldout",
+          "passed": 1,
+          "total": 5,
+          "score": 0.2
+        },
+        {
+          "task_id": "atomate2-env-phonon-flow-plan",
+          "split": "heldout",
+          "passed": 0,
+          "total": 5,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "skill": "atomate2",
+      "variant": "package-skill",
+      "score": 0.8666666666666667,
+      "passed": 13,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "atomate2-env-workflow-taskdoc",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "atomate2-env-vasp-workflow-plan",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "atomate2-env-phonon-flow-plan",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "hyperspy",
+      "variant": "baseline",
+      "score": 0.6,
+      "passed": 9,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "hyperspy-env-spectral-map",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "hyperspy-env-eds-eels-axes",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "hyperspy-env-eels-edge-model",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        }
+      ]
+    },
+    {
+      "skill": "hyperspy",
+      "variant": "package-skill",
+      "score": 1.0,
+      "passed": 15,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "hyperspy-env-spectral-map",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "hyperspy-env-eds-eels-axes",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "hyperspy-env-eels-edge-model",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "skill": "impedance",
+      "variant": "baseline",
+      "score": 0.6666666666666666,
+      "passed": 10,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "impedance-env-eis-fit",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "impedance-env-lin-kk",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "impedance-env-preprocess-circuit-compare",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        }
+      ]
+    },
+    {
+      "skill": "impedance",
+      "variant": "package-skill",
+      "score": 0.9333333333333333,
+      "passed": 14,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "impedance-env-eis-fit",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "impedance-env-lin-kk",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "impedance-env-preprocess-circuit-compare",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "mace",
+      "variant": "baseline",
+      "score": 0.6,
+      "passed": 9,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "mace-env-mlip-relax",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "mace-env-md-foundation-model",
+          "split": "heldout",
+          "passed": 2,
+          "total": 5,
+          "score": 0.4
+        },
+        {
+          "task_id": "mace-env-batch-force-screen",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "mace",
+      "variant": "package-skill",
+      "score": 0.7333333333333333,
+      "passed": 11,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "mace-env-mlip-relax",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "mace-env-md-foundation-model",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "mace-env-batch-force-screen",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "matminer",
+      "variant": "baseline",
+      "score": 0.2,
+      "passed": 3,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "matminer-env-composition-descriptors",
+          "split": "heldout",
+          "passed": 1,
+          "total": 5,
+          "score": 0.2
+        },
+        {
+          "task_id": "matminer-env-structure-descriptors",
+          "split": "heldout",
+          "passed": 1,
+          "total": 5,
+          "score": 0.2
+        },
+        {
+          "task_id": "matminer-env-dataset-baseline",
+          "split": "heldout",
+          "passed": 1,
+          "total": 5,
+          "score": 0.2
+        }
+      ]
+    },
+    {
+      "skill": "matminer",
+      "variant": "package-skill",
+      "score": 1.0,
+      "passed": 15,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "matminer-env-composition-descriptors",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "matminer-env-structure-descriptors",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "matminer-env-dataset-baseline",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "skill": "openmm",
+      "variant": "baseline",
+      "score": 0.8666666666666667,
+      "passed": 13,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "openmm-env-md-setup",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "openmm-env-custom-force",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "openmm-env-checkpoint-restart",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "skill": "openmm",
+      "variant": "package-skill",
+      "score": 1.0,
+      "passed": 15,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "openmm-env-md-setup",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "openmm-env-custom-force",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "openmm-env-checkpoint-restart",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "skill": "py4dstem",
+      "variant": "baseline",
+      "score": 0.6,
+      "passed": 9,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "py4dstem-env-virtual-bragg",
+          "split": "heldout",
+          "passed": 2,
+          "total": 5,
+          "score": 0.4
+        },
+        {
+          "task_id": "py4dstem-env-com-dpc",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "py4dstem-env-bragg-strain-map",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "py4dstem",
+      "variant": "package-skill",
+      "score": 0.9333333333333333,
+      "passed": 14,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "py4dstem-env-virtual-bragg",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "py4dstem-env-com-dpc",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "py4dstem-env-bragg-strain-map",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "skill": "pybamm",
+      "variant": "baseline",
+      "score": 0.5333333333333333,
+      "passed": 8,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "pybamm-env-battery-discharge",
+          "split": "heldout",
+          "passed": 2,
+          "total": 5,
+          "score": 0.4
+        },
+        {
+          "task_id": "pybamm-env-parameter-sweep",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "pybamm-env-degradation-cycle-study",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        }
+      ]
+    },
+    {
+      "skill": "pybamm",
+      "variant": "package-skill",
+      "score": 0.9333333333333333,
+      "passed": 14,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "pybamm-env-battery-discharge",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pybamm-env-parameter-sweep",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pybamm-env-degradation-cycle-study",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "pymatgen",
+      "variant": "baseline",
+      "score": 0.7333333333333333,
+      "passed": 11,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "pymatgen-env-phase-diagram",
+          "split": "heldout",
+          "passed": 2,
+          "total": 5,
+          "score": 0.4
+        },
+        {
+          "task_id": "pymatgen-env-structure-transform",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pymatgen-env-disordered-structure-ordering",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "pymatgen",
+      "variant": "package-skill",
+      "score": 1.0,
+      "passed": 15,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "pymatgen-env-phase-diagram",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pymatgen-env-structure-transform",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pymatgen-env-disordered-structure-ordering",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "skill": "pyscf",
+      "variant": "baseline",
+      "score": 0.9333333333333333,
+      "passed": 14,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "pyscf-env-molecule-dft",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pyscf-env-open-shell",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pyscf-env-geometry-optimization",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "pyscf",
+      "variant": "package-skill",
+      "score": 0.8666666666666667,
+      "passed": 13,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "pyscf-env-molecule-dft",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "pyscf-env-open-shell",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "pyscf-env-geometry-optimization",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "rdkit",
+      "variant": "baseline",
+      "score": 0.7333333333333333,
+      "passed": 11,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "rdkit-env-smiles-fingerprints",
+          "split": "heldout",
+          "passed": 3,
+          "total": 5,
+          "score": 0.6
+        },
+        {
+          "task_id": "rdkit-env-conformer-descriptors",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "rdkit-env-substructure-scaffolds",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        }
+      ]
+    },
+    {
+      "skill": "rdkit",
+      "variant": "package-skill",
+      "score": 0.9333333333333333,
+      "passed": 14,
+      "total": 15,
+      "tasks": [
+        {
+          "task_id": "rdkit-env-smiles-fingerprints",
+          "split": "heldout",
+          "passed": 4,
+          "total": 5,
+          "score": 0.8
+        },
+        {
+          "task_id": "rdkit-env-conformer-descriptors",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        },
+        {
+          "task_id": "rdkit-env-substructure-scaffolds",
+          "split": "heldout",
+          "passed": 5,
+          "total": 5,
+          "score": 1.0
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "skill": "ase",
+      "decision": "skill-win",
+      "delta": 0.06666666666666676
+    },
+    {
+      "skill": "atomate2",
+      "decision": "skill-win",
+      "delta": 0.8
+    },
+    {
+      "skill": "hyperspy",
+      "decision": "skill-win",
+      "delta": 0.4
+    },
+    {
+      "skill": "impedance",
+      "decision": "skill-win",
+      "delta": 0.2666666666666667
+    },
+    {
+      "skill": "mace",
+      "decision": "skill-win",
+      "delta": 0.1333333333333333
+    },
+    {
+      "skill": "matminer",
+      "decision": "skill-win",
+      "delta": 0.8
+    },
+    {
+      "skill": "openmm",
+      "decision": "skill-win",
+      "delta": 0.1333333333333333
+    },
+    {
+      "skill": "py4dstem",
+      "decision": "skill-win",
+      "delta": 0.33333333333333337
+    },
+    {
+      "skill": "pybamm",
+      "decision": "skill-win",
+      "delta": 0.4
+    },
+    {
+      "skill": "pymatgen",
+      "decision": "skill-win",
+      "delta": 0.2666666666666667
+    },
+    {
+      "skill": "pyscf",
+      "decision": "baseline-win",
+      "delta": -0.06666666666666665
+    },
+    {
+      "skill": "rdkit",
+      "decision": "skill-win",
+      "delta": 0.20000000000000007
+    }
+  ]
+}

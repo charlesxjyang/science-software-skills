@@ -1,0 +1,1 @@
+{"task_id": "__preflight__", "skill": "", "variant": "preflight", "prompt": "claude auth status --json", "status": "error", "returncode": 1, "stdout": "Claude auth status reports loggedIn=false. Run `claude auth login`, then retry.\n{\"apiProvider\": \"firstParty\", \"authMethod\": \"none\", \"loggedIn\": false}\n", "stderr": ""}

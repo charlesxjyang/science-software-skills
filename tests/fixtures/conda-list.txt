@@ -1,0 +1,17 @@
+# packages in environment at /opt/conda/envs/eis-demo:
+#
+# Name                    Version                   Build  Channel
+numpy                     2.2.0           py312h7c1f314_0  conda-forge
+ase                       3.26.0             pyhd8ed1ab_0  conda-forge
+pymatgen                  2026.4.16         py312h8a4d0bd_0  conda-forge
+rdkit                     2026.03.2        py312h3f6f0b0_0  conda-forge
+mace-torch                0.3.13                   pypi_0  pypi
+impedance                 1.7.1                    pypi_0  pypi
+py4DSTEM                  0.14.14                  pypi_0  pypi
+hyperspy                  2.4.0              pyhd8ed1ab_0  conda-forge
+pybamm                    26.4.0                   pypi_0  pypi
+pyscf                     2.11.0                   pypi_0  pypi
+openmm                    8.4.0          py312h01d7d91_0  conda-forge
+matminer                  0.9.3                    pypi_0  pypi
+atomate2                  0.0.21                   pypi_0  pypi
+scipy                     1.15.0          py312h1f3c4e4_0  conda-forge

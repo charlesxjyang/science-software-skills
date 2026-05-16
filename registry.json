@@ -1,0 +1,91 @@
+{
+  "skills": [
+    {
+      "skill_name": "ase",
+      "distributions": [
+        "ase"
+      ],
+      "skill_dir": "ase"
+    },
+    {
+      "skill_name": "pymatgen",
+      "distributions": [
+        "pymatgen"
+      ],
+      "skill_dir": "pymatgen"
+    },
+    {
+      "skill_name": "rdkit",
+      "distributions": [
+        "rdkit",
+        "rdkit-pypi"
+      ],
+      "skill_dir": "rdkit"
+    },
+    {
+      "skill_name": "mace",
+      "distributions": [
+        "mace-torch"
+      ],
+      "skill_dir": "mace"
+    },
+    {
+      "skill_name": "impedance",
+      "distributions": [
+        "impedance"
+      ],
+      "skill_dir": "impedance"
+    },
+    {
+      "skill_name": "py4dstem",
+      "distributions": [
+        "py4DSTEM",
+        "py4dstem"
+      ],
+      "skill_dir": "py4dstem"
+    },
+    {
+      "skill_name": "hyperspy",
+      "distributions": [
+        "hyperspy"
+      ],
+      "skill_dir": "hyperspy"
+    },
+    {
+      "skill_name": "pybamm",
+      "distributions": [
+        "pybamm",
+        "pybamm-base"
+      ],
+      "skill_dir": "pybamm"
+    },
+    {
+      "skill_name": "pyscf",
+      "distributions": [
+        "pyscf"
+      ],
+      "skill_dir": "pyscf"
+    },
+    {
+      "skill_name": "openmm",
+      "distributions": [
+        "openmm"
+      ],
+      "skill_dir": "openmm"
+    },
+    {
+      "skill_name": "matminer",
+      "distributions": [
+        "matminer"
+      ],
+      "skill_dir": "matminer"
+    },
+    {
+      "skill_name": "atomate2",
+      "distributions": [
+        "atomate2"
+      ],
+      "skill_dir": "atomate2"
+    }
+  ]
+}

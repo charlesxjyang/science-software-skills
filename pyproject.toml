@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "materials-skills"
+version = "0.1.0"
+description = "Environment-aware skill discovery for materials and chemistry Python stacks."
+requires-python = ">=3.10"
+readme = "README.md"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+materials-skills = "materials_skills.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/materials_skills"]
