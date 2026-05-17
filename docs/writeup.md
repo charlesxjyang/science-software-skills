@@ -149,20 +149,21 @@ command still emits `automation_steps` for machine-readable final gates when
 artifacts are incomplete, and reports no blockers after the scored artifacts
 pass.
 
-The extension benchmark now has three environment-discovery tasks per active
+The extension benchmark now has five environment-discovery tasks per active
 package skill. These prompts intentionally avoid naming the desired workflow
 library in the user request, expose only generic distractors (`numpy`,
 `pandas`, `scipy`, `scikit-learn`, `matplotlib`), and hide the scoring criteria
-from Claude. Each task records documentation sources and a fixed hidden rubric.
-The latest full all-skill run covers the current three-task-per-skill suite.
-Package skills win 11 of 12 package suites under the fixed keyword rubric. The
-baseline scores 109/180 rubric terms; package-skill context scores 165/180.
-The one regression is PySCF, where baseline scores 14/15 and package-skill
-scores 13/15. MACE now shows a positive margin: baseline 9/15, package-skill
-11/15. The first black-box optimizer run on the expanded three-task MACE suite
-improved the candidate-notes heldout score from 10/15 to 11/15; those generic
-notes were folded into the canonical MACE skill, while the optimizer still
-refuses automatic promotion without a train/dev selection split.
+from the model. Each task records documentation sources and a fixed hidden
+rubric. The expanded Codex run covers the current five-task-per-skill suite.
+Package skills win 11 of 12 package suites and tie RDKit under the fixed
+keyword rubric. The baseline scores 143/300 rubric terms; package-skill context
+scores 257/300. The older Claude extension report is retained as a prior
+three-task-suite artifact until the expanded Claude matrix is rerun. MACE still
+shows a positive margin in the expanded Codex run: baseline 13/25,
+package-skill 18/25. The first black-box optimizer run on the earlier
+three-task MACE suite improved the candidate-notes heldout score from 10/15 to
+11/15; those generic notes were folded into the canonical MACE skill, while the
+optimizer still refuses automatic promotion without a train/dev selection split.
 
 ## Open Design Questions
 

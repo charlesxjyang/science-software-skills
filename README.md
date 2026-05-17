@@ -83,6 +83,8 @@ python eval/scripts/check_score_report.py --report eval/score-report.md
 python eval/scripts/check_eval_artifacts.py --results eval/results.jsonl --report eval/score-report.md
 python eval/scripts/optimize_skills.py --tasks eval/tasks/extension_tasks.json --output-dir eval/optimization-real --json
 python eval/scripts/score_extension_results.py --results eval/extension-results.jsonl
+python eval/scripts/run_agent_eval.py --provider codex --tasks eval/tasks/extension_tasks.json --variant baseline --variant package-skill --results eval/codex-extension-results.jsonl --resume
+python eval/scripts/run_agent_eval.py --provider gemini --tasks eval/tasks/extension_tasks.json --variant baseline --variant package-skill --results eval/gemini-extension-results.jsonl --resume
 ```
 
 Non-dry-run evaluation performs a one-call Claude preflight first. If the local
@@ -99,7 +101,10 @@ with matching prompt/context metadata and non-empty stdout. Reserve
 `--skip-preflight` for disposable debugging outputs or for deliberately
 refreshing auth-blocked fixtures; the normal empirical path should use the
 pipeline wrappers below. The completeness check must pass before treating the
-empirical comparison as finished. The
+empirical comparison as finished. The `run_agent_eval.py` helper reuses the
+same prompts for non-Claude providers: Codex uses the local `codex exec` CLI in
+a read-only temporary directory, and Gemini uses the REST API with
+`GEMINI_API_KEY`. The
 `run_v0_pipeline.py` wrapper runs the post-login preflight, smoke test, full
 matrix, completeness check, and score-report scaffold in order; after manual
 scoring, rerun it with `--skip-model-run --check-scored` for the final artifact
@@ -117,18 +122,21 @@ empirical blockers such as
 `evaluation` and `scoring` before the detailed errors.
 
 The extension benchmark in `eval/tasks/extension_tasks.json` is the current
-environment-discovery surface. It has three hidden-rubric tasks per active
-package skill. User prompts list only generic distractors (`numpy`, `pandas`,
-`scipy`, `scikit-learn`, `matplotlib`) and realistic scientific intent; target
-package names are hidden from user prompts and appear only in manifest metadata,
-rubrics, docs source fields, and loaded package-skill context. The latest full
-baseline-vs-package-skill report in `eval/extension-score-report.md` covers the
-current three-task-per-skill suite: package skills win 11 of 12 package suites,
-with one baseline win (`pyscf`) under the fixed rubric. Overall, baseline scores
-109/180 rubric terms and package-skill context scores 165/180. A MACE-only
-black-box optimizer run is recorded in `eval/optimization-mace/report.md`.
-`eval/scripts/optimize_skills.py` can still test skill-file candidates without
-mutating canonical skills.
+environment-discovery surface. It has five hidden-rubric tasks per active
+package skill, with the two newest tasks for each package drawn from documented
+examples and recorded in each task's `doc_sources`. User prompts list only
+generic distractors (`numpy`, `pandas`, `scipy`, `scikit-learn`, `matplotlib`)
+and realistic scientific intent; target package names are hidden from user
+prompts and appear only in manifest metadata, rubrics, docs source fields, and
+loaded package-skill context. The expanded Codex baseline-vs-package-skill run
+is in `eval/codex-extension-results.jsonl` with scores in
+`eval/codex-extension-score-report.md`: package skills win 11 of 12 package
+suites and tie RDKit, with baseline scoring 143/300 rubric terms and
+package-skill context scoring 257/300. The older Claude extension report in
+`eval/extension-score-report.md` is retained as the prior three-task suite until
+the expanded Claude matrix is rerun. A MACE-only black-box optimizer run is
+recorded in `eval/optimization-mace/report.md`. `eval/scripts/optimize_skills.py`
+can still test skill-file candidates without mutating canonical skills.
 
 See `docs/v0-demo.md` for a concrete demo transcript using the mixed conda+pip
 fixture environment. The checked `registry.json` mirrors

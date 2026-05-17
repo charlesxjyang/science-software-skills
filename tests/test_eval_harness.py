@@ -378,7 +378,7 @@ class EvalHarnessTests(unittest.TestCase):
                 self.assertIsNone(re.search(pattern, prompt), f"{task['id']} exposes {alias!r}")
 
         self.assertEqual(set(by_skill), registered)
-        self.assertEqual(set(by_skill.values()), {3})
+        self.assertEqual(set(by_skill.values()), {5})
 
     def test_each_registered_skill_has_evaluation_prompts(self) -> None:
         for record in REGISTRY:
