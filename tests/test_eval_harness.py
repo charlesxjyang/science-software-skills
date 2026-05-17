@@ -37,6 +37,7 @@ from eval.scripts.run_claude_eval import (
 )
 from eval.scripts.check_score_report import check_report, check_report_text, main as score_check_main, task_section
 from eval.scripts.score_results import first_text, load_jsonl, main as score_main, render_report
+from eval.scripts.score_extension_results import score_records as score_extension_records
 from eval.scripts.optimize_skills import score_results as score_optimization_results, write_report
 from materials_skills.registry import REGISTRY
 
@@ -379,6 +380,51 @@ class EvalHarnessTests(unittest.TestCase):
 
         self.assertEqual(set(by_skill), registered)
         self.assertEqual(set(by_skill.values()), {5})
+
+    def test_extension_scorer_uses_latest_record_and_counts_non_ok_as_zero(self) -> None:
+        task = load_tasks(EXTENSION_TASKS)[0]
+        rubric_text = " ".join(term for group in task["rubric_terms"] for term in group)
+        records = [
+            {
+                "task_id": task["id"],
+                "skill": task["skill"],
+                "variant": "baseline",
+                "status": "ok",
+                "stdout": rubric_text,
+            },
+            {
+                "task_id": task["id"],
+                "skill": task["skill"],
+                "variant": "baseline",
+                "status": "error",
+                "stdout": "",
+            },
+            {
+                "task_id": task["id"],
+                "skill": task["skill"],
+                "variant": "package-skill",
+                "status": "ok",
+                "stdout": rubric_text,
+            },
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            results = Path(tmp) / "results.jsonl"
+            results.write_text("\n".join(json.dumps(record) for record in records) + "\n", encoding="utf-8")
+            payload = score_extension_records([task], results)
+
+        by_variant = {row["variant"]: row for row in payload["rows"]}
+        self.assertEqual(by_variant["baseline"]["passed"], 0)
+        self.assertEqual(by_variant["baseline"]["total"], 5)
+        self.assertEqual(by_variant["package-skill"]["passed"], 5)
+        self.assertEqual(by_variant["package-skill"]["total"], 5)
+        self.assertEqual(payload["missing"], [
+            {
+                "task_id": task["id"],
+                "skill": task["skill"],
+                "variant": "baseline",
+                "status": "error",
+            }
+        ])
 
     def test_each_registered_skill_has_evaluation_prompts(self) -> None:
         for record in REGISTRY:

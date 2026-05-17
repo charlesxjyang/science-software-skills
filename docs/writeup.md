@@ -154,11 +154,12 @@ package skill. These prompts intentionally avoid naming the desired workflow
 library in the user request, expose only generic distractors (`numpy`,
 `pandas`, `scipy`, `scikit-learn`, `matplotlib`), and hide the scoring criteria
 from the model. Each task records documentation sources and a fixed hidden
-rubric. The expanded Codex run covers the current five-task-per-skill suite.
-Package skills win 11 of 12 package suites and tie RDKit under the fixed
-keyword rubric. The baseline scores 143/300 rubric terms; package-skill context
-scores 257/300. The older Claude extension report is retained as a prior
-three-task-suite artifact until the expanded Claude matrix is rerun. MACE still
+rubric. The expanded Claude and Codex runs cover the current five-task-per-skill
+suite. For Claude, package skills win all 12 package suites; baseline scores
+159/300 rubric terms and package-skill context scores 268/300. One Claude
+baseline call for the pymatgen Pourbaix task repeatedly timed out and is counted
+as zero. For Codex, package skills win 11 of 12 package suites and tie RDKit;
+baseline scores 143/300 and package-skill context scores 257/300. MACE still
 shows a positive margin in the expanded Codex run: baseline 13/25,
 package-skill 18/25. The first black-box optimizer run on the earlier
 three-task MACE suite improved the candidate-notes heldout score from 10/15 to

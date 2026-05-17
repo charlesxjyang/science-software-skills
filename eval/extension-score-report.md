@@ -5,42 +5,46 @@ Scores use the same fixed keyword rubrics as the black-box optimizer.
 
 | Skill | Variant | Score | Passed | Total |
 | --- | --- | ---: | ---: | ---: |
-| `ase` | `baseline` | 0.733 | 11 | 15 |
-| `ase` | `package-skill` | 0.800 | 12 | 15 |
-| `atomate2` | `baseline` | 0.067 | 1 | 15 |
-| `atomate2` | `package-skill` | 0.867 | 13 | 15 |
-| `hyperspy` | `baseline` | 0.600 | 9 | 15 |
-| `hyperspy` | `package-skill` | 1.000 | 15 | 15 |
-| `impedance` | `baseline` | 0.667 | 10 | 15 |
-| `impedance` | `package-skill` | 0.933 | 14 | 15 |
-| `mace` | `baseline` | 0.600 | 9 | 15 |
-| `mace` | `package-skill` | 0.733 | 11 | 15 |
-| `matminer` | `baseline` | 0.200 | 3 | 15 |
-| `matminer` | `package-skill` | 1.000 | 15 | 15 |
-| `openmm` | `baseline` | 0.867 | 13 | 15 |
-| `openmm` | `package-skill` | 1.000 | 15 | 15 |
-| `py4dstem` | `baseline` | 0.600 | 9 | 15 |
-| `py4dstem` | `package-skill` | 0.933 | 14 | 15 |
-| `pybamm` | `baseline` | 0.533 | 8 | 15 |
-| `pybamm` | `package-skill` | 0.933 | 14 | 15 |
-| `pymatgen` | `baseline` | 0.733 | 11 | 15 |
-| `pymatgen` | `package-skill` | 1.000 | 15 | 15 |
-| `pyscf` | `baseline` | 0.933 | 14 | 15 |
-| `pyscf` | `package-skill` | 0.867 | 13 | 15 |
-| `rdkit` | `baseline` | 0.733 | 11 | 15 |
-| `rdkit` | `package-skill` | 0.933 | 14 | 15 |
+| `ase` | `baseline` | 0.560 | 14 | 25 |
+| `ase` | `package-skill` | 0.800 | 20 | 25 |
+| `atomate2` | `baseline` | 0.040 | 1 | 25 |
+| `atomate2` | `package-skill` | 0.880 | 22 | 25 |
+| `hyperspy` | `baseline` | 0.560 | 14 | 25 |
+| `hyperspy` | `package-skill` | 0.960 | 24 | 25 |
+| `impedance` | `baseline` | 0.480 | 12 | 25 |
+| `impedance` | `package-skill` | 0.880 | 22 | 25 |
+| `mace` | `baseline` | 0.640 | 16 | 25 |
+| `mace` | `package-skill` | 0.760 | 19 | 25 |
+| `matminer` | `baseline` | 0.280 | 7 | 25 |
+| `matminer` | `package-skill` | 0.920 | 23 | 25 |
+| `openmm` | `baseline` | 0.880 | 22 | 25 |
+| `openmm` | `package-skill` | 0.960 | 24 | 25 |
+| `py4dstem` | `baseline` | 0.440 | 11 | 25 |
+| `py4dstem` | `package-skill` | 0.920 | 23 | 25 |
+| `pybamm` | `baseline` | 0.560 | 14 | 25 |
+| `pybamm` | `package-skill` | 0.920 | 23 | 25 |
+| `pymatgen` | `baseline` | 0.440 | 11 | 25 |
+| `pymatgen` | `package-skill` | 0.960 | 24 | 25 |
+| `pyscf` | `baseline` | 0.720 | 18 | 25 |
+| `pyscf` | `package-skill` | 0.880 | 22 | 25 |
+| `rdkit` | `baseline` | 0.760 | 19 | 25 |
+| `rdkit` | `package-skill` | 0.880 | 22 | 25 |
 
 ## Decisions
 
-- `ase`: skill-win (package-skill minus baseline +0.067)
-- `atomate2`: skill-win (package-skill minus baseline +0.800)
+- `ase`: skill-win (package-skill minus baseline +0.240)
+- `atomate2`: skill-win (package-skill minus baseline +0.840)
 - `hyperspy`: skill-win (package-skill minus baseline +0.400)
-- `impedance`: skill-win (package-skill minus baseline +0.267)
-- `mace`: skill-win (package-skill minus baseline +0.133)
-- `matminer`: skill-win (package-skill minus baseline +0.800)
-- `openmm`: skill-win (package-skill minus baseline +0.133)
-- `py4dstem`: skill-win (package-skill minus baseline +0.333)
-- `pybamm`: skill-win (package-skill minus baseline +0.400)
-- `pymatgen`: skill-win (package-skill minus baseline +0.267)
-- `pyscf`: baseline-win (package-skill minus baseline -0.067)
-- `rdkit`: skill-win (package-skill minus baseline +0.200)
+- `impedance`: skill-win (package-skill minus baseline +0.400)
+- `mace`: skill-win (package-skill minus baseline +0.120)
+- `matminer`: skill-win (package-skill minus baseline +0.640)
+- `openmm`: skill-win (package-skill minus baseline +0.080)
+- `py4dstem`: skill-win (package-skill minus baseline +0.480)
+- `pybamm`: skill-win (package-skill minus baseline +0.360)
+- `pymatgen`: skill-win (package-skill minus baseline +0.520)
+- `pyscf`: skill-win (package-skill minus baseline +0.160)
+- `rdkit`: skill-win (package-skill minus baseline +0.120)
+
+## Missing Or Non-OK Latest Records
+
+- `pymatgen-env-pourbaix-analysis` / `baseline`: error

@@ -128,15 +128,18 @@ examples and recorded in each task's `doc_sources`. User prompts list only
 generic distractors (`numpy`, `pandas`, `scipy`, `scikit-learn`, `matplotlib`)
 and realistic scientific intent; target package names are hidden from user
 prompts and appear only in manifest metadata, rubrics, docs source fields, and
-loaded package-skill context. The expanded Codex baseline-vs-package-skill run
-is in `eval/codex-extension-results.jsonl` with scores in
+loaded package-skill context. The expanded Claude baseline-vs-package-skill run
+is in `eval/extension-results.jsonl` with scores in
+`eval/extension-score-report.md`: package skills win all 12 package suites, with
+baseline scoring 159/300 rubric terms and package-skill context scoring 268/300.
+One Claude baseline call (`pymatgen-env-pourbaix-analysis`) repeatedly timed out
+and is retained as a non-OK record counted as zero rubric points. The expanded
+Codex run is in `eval/codex-extension-results.jsonl` with scores in
 `eval/codex-extension-score-report.md`: package skills win 11 of 12 package
-suites and tie RDKit, with baseline scoring 143/300 rubric terms and
-package-skill context scoring 257/300. The older Claude extension report in
-`eval/extension-score-report.md` is retained as the prior three-task suite until
-the expanded Claude matrix is rerun. A MACE-only black-box optimizer run is
-recorded in `eval/optimization-mace/report.md`. `eval/scripts/optimize_skills.py`
-can still test skill-file candidates without mutating canonical skills.
+suites and tie RDKit, with baseline scoring 143/300 and package-skill context
+scoring 257/300. A MACE-only black-box optimizer run is recorded in
+`eval/optimization-mace/report.md`. `eval/scripts/optimize_skills.py` can still
+test skill-file candidates without mutating canonical skills.
 
 See `docs/v0-demo.md` for a concrete demo transcript using the mixed conda+pip
 fixture environment. The checked `registry.json` mirrors

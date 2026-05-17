@@ -27,29 +27,56 @@ DEFAULT_SUMMARY = REPO_ROOT / "eval" / "extension-score-summary.json"
 
 def score_records(tasks: list[dict], results: Path) -> dict[str, object]:
     task_by_id = {task["id"]: task for task in tasks}
+    latest_records: dict[tuple[str, str], dict] = {}
+    for record in load_jsonl(results):
+        task_id = record.get("task_id")
+        variant = record.get("variant")
+        if task_id in task_by_id and variant in {"baseline", "package-skill"}:
+            latest_records[(task_id, variant)] = record
+
     grouped: dict[tuple[str, str], dict[str, object]] = defaultdict(
         lambda: {"passed": 0, "total": 0, "tasks": []}
     )
+    missing: list[dict[str, str]] = []
 
-    for record in load_jsonl(results):
-        if record.get("status") != "ok":
-            continue
-        task = task_by_id.get(record.get("task_id"))
-        if task is None:
-            continue
-        passed, total = record_score(task, record)
-        key = (task["skill"], record["variant"])
-        grouped[key]["passed"] = int(grouped[key]["passed"]) + passed
-        grouped[key]["total"] = int(grouped[key]["total"]) + total
-        grouped[key]["tasks"].append(
-            {
-                "task_id": task["id"],
-                "split": task.get("split", ""),
-                "passed": passed,
-                "total": total,
-                "score": passed / total if total else 0.0,
-            }
-        )
+    for task in tasks:
+        for variant in ("baseline", "package-skill"):
+            record = latest_records.get((task["id"], variant))
+            if record is None or record.get("status") != "ok":
+                total = len(task.get("rubric_terms") or task["success_criteria"])
+                key = (task["skill"], variant)
+                grouped[key]["total"] = int(grouped[key]["total"]) + total
+                grouped[key]["tasks"].append(
+                    {
+                        "task_id": task["id"],
+                        "split": task.get("split", ""),
+                        "passed": 0,
+                        "total": total,
+                        "score": 0.0,
+                    }
+                )
+                missing.append(
+                    {
+                        "task_id": task["id"],
+                        "skill": task["skill"],
+                        "variant": variant,
+                        "status": "" if record is None else str(record.get("status", "")),
+                    }
+                )
+                continue
+            passed, total = record_score(task, record)
+            key = (task["skill"], variant)
+            grouped[key]["passed"] = int(grouped[key]["passed"]) + passed
+            grouped[key]["total"] = int(grouped[key]["total"]) + total
+            grouped[key]["tasks"].append(
+                {
+                    "task_id": task["id"],
+                    "split": task.get("split", ""),
+                    "passed": passed,
+                    "total": total,
+                    "score": passed / total if total else 0.0,
+                }
+            )
 
     rows = []
     for (skill, variant), values in sorted(grouped.items()):
@@ -85,7 +112,7 @@ def score_records(tasks: list[dict], results: Path) -> dict[str, object]:
                 decision = "tie"
         decisions.append({"skill": skill, "decision": decision, "delta": delta})
 
-    return {"rows": rows, "decisions": decisions}
+    return {"rows": rows, "decisions": decisions, "missing": missing}
 
 
 def write_report(payload: dict[str, object], report: Path, summary: Path) -> None:
@@ -114,6 +141,11 @@ def write_report(payload: dict[str, object], report: Path, summary: Path) -> Non
             f"- `{decision['skill']}`: {decision['decision']} "
             f"(package-skill minus baseline {delta_text})"
         )
+    if payload.get("missing"):
+        lines.extend(["", "## Missing Or Non-OK Latest Records", ""])
+        for item in payload["missing"]:
+            status = item["status"] or "missing"
+            lines.append(f"- `{item['task_id']}` / `{item['variant']}`: {status}")
     report.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
